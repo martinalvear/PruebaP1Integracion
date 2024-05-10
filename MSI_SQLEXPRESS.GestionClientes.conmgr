@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="MSI_SQLEXPRESS.GestionClientes"
+  DTS:DTSID="{C8D2183D-D768-47A4-9A4D-FC6BBC788C5F}"
+  DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=MSI\SQLEXPRESS;Initial Catalog=GestionClientes;Integrated Security=True;Application Name=SSIS-PruebaP1-{C8D2183D-D768-47A4-9A4D-FC6BBC788C5F}MSI\SQLEXPRESS.GestionClientes;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

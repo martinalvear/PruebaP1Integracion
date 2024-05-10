@@ -1,0 +1,1658 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/9/2024 7:32:04 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="MSI"
+  DTS:CreatorName="MSI\user"
+  DTS:DTSID="{D5CA4242-DEFD-4C1A-BEA5-BB0675680A6A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="ClientesToContacCenter"
+  DTS:PackageType="5"
+  DTS:VersionBuild="26"
+  DTS:VersionGUID="{3A2C38D8-59AA-4794-BFB2-D174E1D83BE4}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Administrador de conexiones de archivos planos]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{773570E1-46A8-4FD3-A87C-50DDEB026D7E}"
+      DTS:ObjectName="Administrador de conexiones de archivos planos">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x002C_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="65001"
+          DTS:ConnectionString="C:\Users\user\Downloads\contable.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="id"
+              DTS:DTSID="{AB06143A-2A24-4585-B034-0D5E4A8A35E0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="cliente"
+              DTS:DTSID="{9428ADC2-A759-4397-8A7F-7B642795496F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="saldo"
+              DTS:DTSID="{8F767867-1B01-435B-ADB6-F9CD59DD64BC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="tipo"
+              DTS:DTSID="{4DDC50D4-CA96-4D59-9D7F-0451CEC121B1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="cupotc"
+              DTS:DTSID="{96AACDC0-6A83-49DF-83BD-CDB6824667DF}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MSI\SQLEXPRESS.SistemaContable]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{650433CA-73DF-418E-AF24-F7291EA641D2}"
+      DTS:ObjectName="MSI\SQLEXPRESS.SistemaContable">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=MSI\SQLEXPRESS;Initial Catalog=SistemaContable;Integrated Security=True;Application Name=SSIS-ClientesToContacCenter-{650433CA-73DF-418E-AF24-F7291EA641D2}MSI\SQLEXPRESS.SistemaContable;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Clientes a ContacCenter"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{2118AC64-11F6-427C-BEE1-8D32429663BC}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Clientes a ContacCenter"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Clientes a ContacCenter\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Clientes a ContacCenter\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Clientes a ContacCenter\Conditional Split.Inputs[Conditional Split Input].Columns[idcclientes]"
+                      cachedDataType="i4"
+                      cachedName="idcclientes"
+                      lineageId="Package\Clientes a ContacCenter\Merge Join.Outputs[Merge Join Output].Columns[idcclientes]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Clientes a ContacCenter\Conditional Split.Outputs[Case 1]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Case 1"
+                  synchronousInputId="Package\Clientes a ContacCenter\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\Clientes a ContacCenter\Merge Join.Outputs[Merge Join Output].Columns[idcclientes]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(idcclientes)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Clientes a ContacCenter\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Clientes a ContacCenter\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Clientes a ContacCenter\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Clientes a ContacCenter\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Clientes a ContacCenter\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Clientes a ContacCenter\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Clientes a ContacCenter\Destino de ADO NET"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
+              description="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC."
+              name="Destino de ADO NET"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Nombre de la tabla de la base de datos de destino."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."tc_clientes"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifique el número de filas por lote. El valor predeterminado es 0, que utiliza el mismo tamaño que el búfer interno de SSIS. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Especifica si se debe usar la interfaz SqlBulkCopy para mejorar el rendimiento de las operaciones de inserción masiva. No todos los proveedores admiten esta interfaz."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Clientes a ContacCenter\Destino de ADO NET.Connections[IDbConnection]"
+                  connectionManagerID="{AEEA4BD0-8C8F-4BB6-8A45-2A632DC8E2E6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[MSI_SQLEXPRESS.GestionContacCenter]"
+                  description="Administrador de conexiones administrado"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Clientes a ContacCenter\Destino de ADO NET.Inputs[Entrada de destino de ADO NET]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de ADO NET">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Clientes a ContacCenter\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="nombre"
+                      externalMetadataColumnId="Package\Clientes a ContacCenter\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[nombre]"
+                      lineageId="Package\Clientes a ContacCenter\Merge Join.Outputs[Merge Join Output].Columns[nombre]" />
+                    <inputColumn
+                      refId="Package\Clientes a ContacCenter\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[apellido]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="apellido"
+                      externalMetadataColumnId="Package\Clientes a ContacCenter\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[apellido]"
+                      lineageId="Package\Clientes a ContacCenter\Merge Join.Outputs[Merge Join Output].Columns[apellido]" />
+                    <inputColumn
+                      refId="Package\Clientes a ContacCenter\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[telefono]"
+                      cachedDataType="i4"
+                      cachedName="telefono"
+                      externalMetadataColumnId="Package\Clientes a ContacCenter\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[telefono]"
+                      lineageId="Package\Clientes a ContacCenter\Merge Join.Outputs[Merge Join Output].Columns[telefono]" />
+                    <inputColumn
+                      refId="Package\Clientes a ContacCenter\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[idcclientes]"
+                      cachedDataType="i4"
+                      cachedName="idcclientes"
+                      externalMetadataColumnId="Package\Clientes a ContacCenter\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[idcclientes]"
+                      lineageId="Package\Clientes a ContacCenter\Merge Join.Outputs[Merge Join Output].Columns[idcclientes]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Clientes a ContacCenter\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[idcclientes]"
+                      dataType="i4"
+                      name="idcclientes" />
+                    <externalMetadataColumn
+                      refId="Package\Clientes a ContacCenter\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[nombre]"
+                      dataType="wstr"
+                      length="20"
+                      name="nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Clientes a ContacCenter\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[apellido]"
+                      dataType="wstr"
+                      length="20"
+                      name="apellido" />
+                    <externalMetadataColumn
+                      refId="Package\Clientes a ContacCenter\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[telefono]"
+                      dataType="wstr"
+                      length="20"
+                      name="telefono" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Clientes a ContacCenter\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de ADO NET"
+                  synchronousInputId="Package\Clientes a ContacCenter\Destino de ADO NET.Inputs[Entrada de destino de ADO NET]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Clientes a ContacCenter\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Clientes a ContacCenter\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Clientes a ContacCenter\Destino de ADO NET 1"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
+              description="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC."
+              name="Destino de ADO NET 1"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Nombre de la tabla de la base de datos de destino."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."tansacciones"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifique el número de filas por lote. El valor predeterminado es 0, que utiliza el mismo tamaño que el búfer interno de SSIS. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Especifica si se debe usar la interfaz SqlBulkCopy para mejorar el rendimiento de las operaciones de inserción masiva. No todos los proveedores admiten esta interfaz."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Clientes a ContacCenter\Destino de ADO NET 1.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MSI\SQLEXPRESS.SistemaContable]"
+                  connectionManagerRefId="Package.ConnectionManagers[MSI\SQLEXPRESS.SistemaContable]"
+                  description="Administrador de conexiones administrado"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Clientes a ContacCenter\Destino de ADO NET 1.Inputs[Entrada de destino de ADO NET]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de ADO NET">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Clientes a ContacCenter\Destino de ADO NET 1.Inputs[Entrada de destino de ADO NET].Columns[id]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Clientes a ContacCenter\Destino de ADO NET 1.Inputs[Entrada de destino de ADO NET].ExternalColumns[id]"
+                      lineageId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Clientes a ContacCenter\Destino de ADO NET 1.Inputs[Entrada de destino de ADO NET].Columns[cliente]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="cliente"
+                      externalMetadataColumnId="Package\Clientes a ContacCenter\Destino de ADO NET 1.Inputs[Entrada de destino de ADO NET].ExternalColumns[cliente]"
+                      lineageId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Output].Columns[cliente]" />
+                    <inputColumn
+                      refId="Package\Clientes a ContacCenter\Destino de ADO NET 1.Inputs[Entrada de destino de ADO NET].Columns[saldo]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="saldo"
+                      externalMetadataColumnId="Package\Clientes a ContacCenter\Destino de ADO NET 1.Inputs[Entrada de destino de ADO NET].ExternalColumns[saldo]"
+                      lineageId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Output].Columns[saldo]" />
+                    <inputColumn
+                      refId="Package\Clientes a ContacCenter\Destino de ADO NET 1.Inputs[Entrada de destino de ADO NET].Columns[tipo]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="tipo"
+                      externalMetadataColumnId="Package\Clientes a ContacCenter\Destino de ADO NET 1.Inputs[Entrada de destino de ADO NET].ExternalColumns[tipo]"
+                      lineageId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Output].Columns[tipo]" />
+                    <inputColumn
+                      refId="Package\Clientes a ContacCenter\Destino de ADO NET 1.Inputs[Entrada de destino de ADO NET].Columns[cupotc]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="cupotc"
+                      externalMetadataColumnId="Package\Clientes a ContacCenter\Destino de ADO NET 1.Inputs[Entrada de destino de ADO NET].ExternalColumns[cupotc]"
+                      lineageId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Output].Columns[cupotc]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Clientes a ContacCenter\Destino de ADO NET 1.Inputs[Entrada de destino de ADO NET].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Clientes a ContacCenter\Destino de ADO NET 1.Inputs[Entrada de destino de ADO NET].ExternalColumns[cliente]"
+                      dataType="wstr"
+                      length="50"
+                      name="cliente" />
+                    <externalMetadataColumn
+                      refId="Package\Clientes a ContacCenter\Destino de ADO NET 1.Inputs[Entrada de destino de ADO NET].ExternalColumns[saldo]"
+                      dataType="r8"
+                      name="saldo" />
+                    <externalMetadataColumn
+                      refId="Package\Clientes a ContacCenter\Destino de ADO NET 1.Inputs[Entrada de destino de ADO NET].ExternalColumns[tipo]"
+                      dataType="wstr"
+                      length="20"
+                      name="tipo" />
+                    <externalMetadataColumn
+                      refId="Package\Clientes a ContacCenter\Destino de ADO NET 1.Inputs[Entrada de destino de ADO NET].ExternalColumns[cupotc]"
+                      dataType="r8"
+                      name="cupotc" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Clientes a ContacCenter\Destino de ADO NET 1.Outputs[Salida de error de destino de ADO NET]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de ADO NET"
+                  synchronousInputId="Package\Clientes a ContacCenter\Destino de ADO NET 1.Inputs[Entrada de destino de ADO NET]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Destino de ADO NET 1.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Clientes a ContacCenter\Destino de ADO NET 1.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Destino de ADO NET 1.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Clientes a ContacCenter\Destino de ADO NET 1.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Clientes a ContacCenter\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Clientes a ContacCenter\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Administrador de conexiones de archivos planos]"
+                  connectionManagerRefId="Package.ConnectionManagers[Administrador de conexiones de archivos planos]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Output].Columns[id]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[id]"
+                      length="50"
+                      lineageId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Output].Columns[cliente]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[cliente]"
+                      length="50"
+                      lineageId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Output].Columns[cliente]"
+                      name="cliente"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Output].Columns[saldo]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[saldo]"
+                      length="50"
+                      lineageId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Output].Columns[saldo]"
+                      name="saldo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Output].Columns[tipo]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[tipo]"
+                      length="50"
+                      lineageId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Output].Columns[tipo]"
+                      name="tipo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Output].Columns[cupotc]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[cupotc]"
+                      length="50"
+                      lineageId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Output].Columns[cupotc]"
+                      name="cupotc"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[id]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[cliente]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="cliente" />
+                    <externalMetadataColumn
+                      refId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[saldo]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="saldo" />
+                    <externalMetadataColumn
+                      refId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[tipo]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="tipo" />
+                    <externalMetadataColumn
+                      refId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[cupotc]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="cupotc" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="65001"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Clientes a ContacCenter\Leer clientes"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server."
+              name="Leer clientes"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL utilizada por el componente para extraer datos."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si se debe permitir que columnas externas que no sean de cadenas se conviertan implícitamente en cadenas en las columnas de salida."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="Nombre de la tabla de la base de datos de origen."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."t_clientes"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especificar el modo de recuperar información de columnas externas"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Clientes a ContacCenter\Leer clientes.Connections[IDbConnection]"
+                  connectionManagerID="{C8D2183D-D768-47A4-9A4D-FC6BBC788C5F}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[MSI_SQLEXPRESS.GestionClientes]"
+                  description="Administrador de conexiones administrado"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de origen de ADO NET]"
+                  name="Salida de origen de ADO NET">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de origen de ADO NET].Columns[idclientes]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de origen de ADO NET].ExternalColumns[idclientes]"
+                      lineageId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de origen de ADO NET].Columns[idclientes]"
+                      name="idclientes"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de origen de ADO NET].Columns[nombre]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de origen de ADO NET].ExternalColumns[nombre]"
+                      length="20"
+                      lineageId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de origen de ADO NET].Columns[nombre]"
+                      name="nombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de origen de ADO NET].Columns[apellido]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de origen de ADO NET].ExternalColumns[apellido]"
+                      length="20"
+                      lineageId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de origen de ADO NET].Columns[apellido]"
+                      name="apellido"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de origen de ADO NET].Columns[telefono]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de origen de ADO NET].ExternalColumns[telefono]"
+                      lineageId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de origen de ADO NET].Columns[telefono]"
+                      name="telefono"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de origen de ADO NET].ExternalColumns[idclientes]"
+                      dataType="i4"
+                      name="idclientes" />
+                    <externalMetadataColumn
+                      refId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de origen de ADO NET].ExternalColumns[nombre]"
+                      dataType="wstr"
+                      length="20"
+                      name="nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de origen de ADO NET].ExternalColumns[apellido]"
+                      dataType="wstr"
+                      length="20"
+                      name="apellido" />
+                    <externalMetadataColumn
+                      refId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de origen de ADO NET].ExternalColumns[telefono]"
+                      dataType="i4"
+                      name="telefono" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de error de origen de ADO NET]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de ADO NET">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de error de origen de ADO NET].Columns[idclientes]"
+                      dataType="i4"
+                      lineageId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de error de origen de ADO NET].Columns[idclientes]"
+                      name="idclientes" />
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de error de origen de ADO NET].Columns[nombre]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de error de origen de ADO NET].Columns[nombre]"
+                      name="nombre" />
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de error de origen de ADO NET].Columns[apellido]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de error de origen de ADO NET].Columns[apellido]"
+                      name="apellido" />
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de error de origen de ADO NET].Columns[telefono]"
+                      dataType="i4"
+                      lineageId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de error de origen de ADO NET].Columns[telefono]"
+                      name="telefono" />
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Clientes a ContacCenter\Leer ContacCenter"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server."
+              name="Leer ContacCenter"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL utilizada por el componente para extraer datos."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT idcclientes
+FROM   tc_clientes</property>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si se debe permitir que columnas externas que no sean de cadenas se conviertan implícitamente en cadenas en las columnas de salida."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="Nombre de la tabla de la base de datos de origen."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."tc_clientes"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especificar el modo de recuperar información de columnas externas"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Clientes a ContacCenter\Leer ContacCenter.Connections[IDbConnection]"
+                  connectionManagerID="{AEEA4BD0-8C8F-4BB6-8A45-2A632DC8E2E6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[MSI_SQLEXPRESS.GestionContacCenter]"
+                  description="Administrador de conexiones administrado"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Clientes a ContacCenter\Leer ContacCenter.Outputs[Salida de origen de ADO NET]"
+                  name="Salida de origen de ADO NET">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Leer ContacCenter.Outputs[Salida de origen de ADO NET].Columns[idcclientes]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Clientes a ContacCenter\Leer ContacCenter.Outputs[Salida de origen de ADO NET].ExternalColumns[idcclientes]"
+                      lineageId="Package\Clientes a ContacCenter\Leer ContacCenter.Outputs[Salida de origen de ADO NET].Columns[idcclientes]"
+                      name="idcclientes"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Clientes a ContacCenter\Leer ContacCenter.Outputs[Salida de origen de ADO NET].ExternalColumns[idcclientes]"
+                      dataType="i4"
+                      name="idcclientes" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Clientes a ContacCenter\Leer ContacCenter.Outputs[Salida de error de origen de ADO NET]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de ADO NET">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Leer ContacCenter.Outputs[Salida de error de origen de ADO NET].Columns[idcclientes]"
+                      dataType="i4"
+                      lineageId="Package\Clientes a ContacCenter\Leer ContacCenter.Outputs[Salida de error de origen de ADO NET].Columns[idcclientes]"
+                      name="idcclientes" />
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Leer ContacCenter.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Clientes a ContacCenter\Leer ContacCenter.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Leer ContacCenter.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Clientes a ContacCenter\Leer ContacCenter.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Clientes a ContacCenter\Merge Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Clientes a ContacCenter\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Clientes a ContacCenter\Merge Join.Inputs[Merge Join Left Input].Columns[idclientes]"
+                      cachedDataType="i4"
+                      cachedName="idclientes"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Clientes a ContacCenter\Sort.Outputs[Sort Output].Columns[idclientes]" />
+                    <inputColumn
+                      refId="Package\Clientes a ContacCenter\Merge Join.Inputs[Merge Join Left Input].Columns[nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="nombre"
+                      lineageId="Package\Clientes a ContacCenter\Sort.Outputs[Sort Output].Columns[nombre]" />
+                    <inputColumn
+                      refId="Package\Clientes a ContacCenter\Merge Join.Inputs[Merge Join Left Input].Columns[apellido]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="apellido"
+                      lineageId="Package\Clientes a ContacCenter\Sort.Outputs[Sort Output].Columns[apellido]" />
+                    <inputColumn
+                      refId="Package\Clientes a ContacCenter\Merge Join.Inputs[Merge Join Left Input].Columns[telefono]"
+                      cachedDataType="i4"
+                      cachedName="telefono"
+                      lineageId="Package\Clientes a ContacCenter\Sort.Outputs[Sort Output].Columns[telefono]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Clientes a ContacCenter\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Clientes a ContacCenter\Merge Join.Inputs[Merge Join Right Input].Columns[idcclientes]"
+                      cachedDataType="i4"
+                      cachedName="idcclientes"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Clientes a ContacCenter\Sort 1.Outputs[Sort Output].Columns[idcclientes]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Clientes a ContacCenter\Merge Join.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Merge Join.Outputs[Merge Join Output].Columns[idclientes]"
+                      dataType="i4"
+                      lineageId="Package\Clientes a ContacCenter\Merge Join.Outputs[Merge Join Output].Columns[idclientes]"
+                      name="idclientes"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Clientes a ContacCenter\Merge Join.Inputs[Merge Join Left Input].Columns[idclientes]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Merge Join.Outputs[Merge Join Output].Columns[nombre]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Clientes a ContacCenter\Merge Join.Outputs[Merge Join Output].Columns[nombre]"
+                      name="nombre">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Clientes a ContacCenter\Merge Join.Inputs[Merge Join Left Input].Columns[nombre]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Merge Join.Outputs[Merge Join Output].Columns[apellido]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Clientes a ContacCenter\Merge Join.Outputs[Merge Join Output].Columns[apellido]"
+                      name="apellido">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Clientes a ContacCenter\Merge Join.Inputs[Merge Join Left Input].Columns[apellido]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Merge Join.Outputs[Merge Join Output].Columns[telefono]"
+                      dataType="i4"
+                      lineageId="Package\Clientes a ContacCenter\Merge Join.Outputs[Merge Join Output].Columns[telefono]"
+                      name="telefono">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Clientes a ContacCenter\Merge Join.Inputs[Merge Join Left Input].Columns[telefono]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Merge Join.Outputs[Merge Join Output].Columns[idcclientes]"
+                      dataType="i4"
+                      lineageId="Package\Clientes a ContacCenter\Merge Join.Outputs[Merge Join Output].Columns[idcclientes]"
+                      name="idcclientes">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Clientes a ContacCenter\Merge Join.Inputs[Merge Join Right Input].Columns[idcclientes]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Clientes a ContacCenter\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Clientes a ContacCenter\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Clientes a ContacCenter\Sort.Inputs[Sort Input].Columns[idclientes]"
+                      cachedDataType="i4"
+                      cachedName="idclientes"
+                      lineageId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de origen de ADO NET].Columns[idclientes]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Clientes a ContacCenter\Sort.Inputs[Sort Input].Columns[nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="nombre"
+                      lineageId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de origen de ADO NET].Columns[nombre]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Clientes a ContacCenter\Sort.Inputs[Sort Input].Columns[apellido]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="apellido"
+                      lineageId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de origen de ADO NET].Columns[apellido]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Clientes a ContacCenter\Sort.Inputs[Sort Input].Columns[telefono]"
+                      cachedDataType="i4"
+                      cachedName="telefono"
+                      lineageId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de origen de ADO NET].Columns[telefono]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Clientes a ContacCenter\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Sort.Outputs[Sort Output].Columns[idclientes]"
+                      dataType="i4"
+                      lineageId="Package\Clientes a ContacCenter\Sort.Outputs[Sort Output].Columns[idclientes]"
+                      name="idclientes"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de origen de ADO NET].Columns[idclientes]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Sort.Outputs[Sort Output].Columns[nombre]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Clientes a ContacCenter\Sort.Outputs[Sort Output].Columns[nombre]"
+                      name="nombre">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de origen de ADO NET].Columns[nombre]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Sort.Outputs[Sort Output].Columns[apellido]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Clientes a ContacCenter\Sort.Outputs[Sort Output].Columns[apellido]"
+                      name="apellido">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de origen de ADO NET].Columns[apellido]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Sort.Outputs[Sort Output].Columns[telefono]"
+                      dataType="i4"
+                      lineageId="Package\Clientes a ContacCenter\Sort.Outputs[Sort Output].Columns[telefono]"
+                      name="telefono">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de origen de ADO NET].Columns[telefono]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Clientes a ContacCenter\Sort 1"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Clientes a ContacCenter\Sort 1.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Clientes a ContacCenter\Sort 1.Inputs[Sort Input].Columns[idcclientes]"
+                      cachedDataType="i4"
+                      cachedName="idcclientes"
+                      lineageId="Package\Clientes a ContacCenter\Leer ContacCenter.Outputs[Salida de origen de ADO NET].Columns[idcclientes]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Clientes a ContacCenter\Sort 1.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Clientes a ContacCenter\Sort 1.Outputs[Sort Output].Columns[idcclientes]"
+                      dataType="i4"
+                      lineageId="Package\Clientes a ContacCenter\Sort 1.Outputs[Sort Output].Columns[idcclientes]"
+                      name="idcclientes"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Clientes a ContacCenter\Leer ContacCenter.Outputs[Salida de origen de ADO NET].Columns[idcclientes]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Clientes a ContacCenter.Paths[Case 1]"
+              endId="Package\Clientes a ContacCenter\Destino de ADO NET.Inputs[Entrada de destino de ADO NET]"
+              name="Case 1"
+              startId="Package\Clientes a ContacCenter\Conditional Split.Outputs[Case 1]" />
+            <path
+              refId="Package\Clientes a ContacCenter.Paths[Flat File Source Output]"
+              endId="Package\Clientes a ContacCenter\Destino de ADO NET 1.Inputs[Entrada de destino de ADO NET]"
+              name="Flat File Source Output"
+              startId="Package\Clientes a ContacCenter\Flat File Source.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Clientes a ContacCenter.Paths[Merge Join Output]"
+              endId="Package\Clientes a ContacCenter\Conditional Split.Inputs[Conditional Split Input]"
+              name="Merge Join Output"
+              startId="Package\Clientes a ContacCenter\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Clientes a ContacCenter.Paths[Salida de origen de ADO NET]"
+              endId="Package\Clientes a ContacCenter\Sort.Inputs[Sort Input]"
+              name="Salida de origen de ADO NET"
+              startId="Package\Clientes a ContacCenter\Leer clientes.Outputs[Salida de origen de ADO NET]" />
+            <path
+              refId="Package\Clientes a ContacCenter.Paths[Salida de origen de ADO NET1]"
+              endId="Package\Clientes a ContacCenter\Sort 1.Inputs[Sort Input]"
+              name="Salida de origen de ADO NET"
+              startId="Package\Clientes a ContacCenter\Leer ContacCenter.Outputs[Salida de origen de ADO NET]" />
+            <path
+              refId="Package\Clientes a ContacCenter.Paths[Sort Output]"
+              endId="Package\Clientes a ContacCenter\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Clientes a ContacCenter\Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\Clientes a ContacCenter.Paths[Sort Output1]"
+              endId="Package\Clientes a ContacCenter\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Clientes a ContacCenter\Sort 1.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="196,42.6666666666667"
+          Id="Package\Clientes a ContacCenter"
+          TopLeft="436.249980498106,58.1578940982799" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Clientes a ContacCenter">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="189.333333333334,42.6666666666667"
+          Id="Package\Clientes a ContacCenter\Destino de ADO NET 1"
+          TopLeft="636.24997155741,179.947366445266" />
+        <NodeLayout
+          Size="140,42.6666666666667"
+          Id="Package\Clientes a ContacCenter\Leer clientes"
+          TopLeft="177.499992065132,31.4736838649515" />
+        <NodeLayout
+          Size="181.333333333334,42.6666666666667"
+          Id="Package\Clientes a ContacCenter\Destino de ADO NET"
+          TopLeft="283.124987343327,346.210522514466" />
+        <NodeLayout
+          Size="98.6666666666667,42.6666666666667"
+          Id="Package\Clientes a ContacCenter\Sort"
+          TopLeft="207.499990724027,102.631577820494" />
+        <NodeLayout
+          Size="132,42.6666666666667"
+          Id="Package\Clientes a ContacCenter\Merge Join"
+          TopLeft="305.624986337498,190.210524227315" />
+        <NodeLayout
+          Size="169.333333333334,42.6666666666667"
+          Id="Package\Clientes a ContacCenter\Leer ContacCenter"
+          TopLeft="393.124982425944,30.7894733461482" />
+        <NodeLayout
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\Clientes a ContacCenter\Flat File Source"
+          TopLeft="641.874971305952,44.473683722214" />
+        <NodeLayout
+          Size="157.333333333334,42.6666666666667"
+          Id="Package\Clientes a ContacCenter\Conditional Split"
+          TopLeft="297.499986700714,266.157891814481" />
+        <NodeLayout
+          Size="108,42"
+          Id="Package\Clientes a ContacCenter\Sort 1"
+          TopLeft="414.999981448055,106.05263041451" />
+        <EdgeLayout
+          Id="Package\Clientes a ContacCenter.Paths[Sort Output1]"
+          TopLeft="468.999981448055,148.05263041451">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-76.70832844389,42.1578938128051"
+              Start="0,0"
+              End="-76.70832844389,34.6578938128051">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.9918053141779" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.9918053141779"
+                    Point2="0,24.9918053141779"
+                    Point3="-4,24.9918053141779" />
+                  <mssgle:LineSegment
+                    End="-72.70832844389,24.9918053141779" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-72.70832844389,24.9918053141779"
+                    Point2="-76.70832844389,24.9918053141779"
+                    Point3="-76.70832844389,28.9918053141779" />
+                  <mssgle:LineSegment
+                    End="-76.70832844389,34.6578938128051" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Clientes a ContacCenter.Paths[Sort Output]"
+          TopLeft="256.833324057361,145.298244487161">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="114.791662280137,44.9122797401549"
+              Start="0,0"
+              End="114.791662280137,37.4122797401549">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.4561398700775" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.4561398700775"
+                    Point2="0,22.4561398700775"
+                    Point3="4,22.4561398700775" />
+                  <mssgle:LineSegment
+                    End="110.791662280137,22.4561398700775" />
+                  <mssgle:CubicBezierSegment
+                    Point1="110.791662280137,22.4561398700775"
+                    Point2="114.791662280137,22.4561398700775"
+                    Point3="114.791662280137,26.4561398700775" />
+                  <mssgle:LineSegment
+                    End="114.791662280137,37.4122797401549" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Clientes a ContacCenter.Paths[Salida de origen de ADO NET1]"
+          TopLeft="477.79164909261,73.4561400128148">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-8.79166764455539,32.5964904016956"
+              Start="0,0"
+              End="-8.79166764455539,25.0964904016956">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.2982452008478" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.2982452008478"
+                    Point2="0,16.2982452008478"
+                    Point3="-4,16.2982452008478" />
+                  <mssgle:LineSegment
+                    End="-4.79166764455539,16.2982452008478" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4.79166764455539,16.2982452008478"
+                    Point2="-8.79166764455539,16.2982452008478"
+                    Point3="-8.79166764455539,20.2982452008478" />
+                  <mssgle:LineSegment
+                    End="-8.79166764455539,25.0964904016956" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Clientes a ContacCenter.Paths[Salida de origen de ADO NET]"
+          TopLeft="247.499992065132,74.1403505316181">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="9.33333199222892,28.4912272888758"
+              Start="0,0"
+              End="9.33333199222892,20.9912272888758">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.2456136444379" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.2456136444379"
+                    Point2="0,14.2456136444379"
+                    Point3="4,14.2456136444379" />
+                  <mssgle:LineSegment
+                    End="5.33333199222892,14.2456136444379" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5.33333199222892,14.2456136444379"
+                    Point2="9.33333199222892,14.2456136444379"
+                    Point3="9.33333199222892,18.2456136444379" />
+                  <mssgle:LineSegment
+                    End="9.33333199222892,20.9912272888758" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Clientes a ContacCenter.Paths[Merge Join Output]"
+          TopLeft="373.89581985244,232.877190893982">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.2807009204988"
+              Start="0,0"
+              End="0,25.7807009204988">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.7807009204988" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Clientes a ContacCenter.Paths[Case 1]"
+          TopLeft="374.979153688687,308.824558481148">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.3859640333186"
+              Start="0,0"
+              End="0,29.8859640333186">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.8859640333186" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-15.2180859375,10.1661265479093,30.436171875,9.5537109375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Clientes a ContacCenter.Paths[Flat File Source Output]"
+          TopLeft="719.208304639285,87.1403503888807">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11.7083335847911,92.8070160563858"
+              Start="0,0"
+              End="11.7083335847911,85.3070160563858">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.4035080281929" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,42.4035080281929"
+                    Point2="0,46.4035080281929"
+                    Point3="4,46.4035080281929" />
+                  <mssgle:LineSegment
+                    End="7.70833358479115,46.4035080281929" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7.70833358479115,46.4035080281929"
+                    Point2="11.7083335847911,46.4035080281929"
+                    Point3="11.7083335847911,50.4035080281929" />
+                  <mssgle:LineSegment
+                    End="11.7083335847911,85.3070160563858" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Clientes a ContacCenter\Destino de ADO NET 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Clientes a ContacCenter\Leer clientes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Clientes a ContacCenter\Destino de ADO NET">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Clientes a ContacCenter\Leer ContacCenter">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
